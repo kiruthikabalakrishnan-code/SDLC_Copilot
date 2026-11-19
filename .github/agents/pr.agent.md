@@ -3,10 +3,8 @@ name: PR Agent
 description: Prepare the Jira issue branch and, after all gates pass, publish a GitHub pull request.
 argument-hint: Jira issue key/ID and workflow phase
 skills:
-  - name: verification
-    path: .github/skills/verification/SKILL.md
-  - name: requirements-traceability
-    path: .github/skills/requirements-traceability/SKILL.md
+  - verification
+  - requirements-traceability
 ---
 
 # Role: PR Agent (Agentic SDLC Pipeline)

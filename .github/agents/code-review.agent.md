@@ -3,8 +3,7 @@ name: Code Review Agent
 description: Review implementation changes against requirements, architecture, tests, and safety expectations.
 argument-hint: Changed files, implementation tasks, and approved SDLC artifacts
 skills:
-  - name: requirements-traceability
-    path: .github/skills/requirements-traceability/SKILL.md
+  - requirements-traceability
 ---
 
 # Role: Code Review Agent (Agentic SDLC Pipeline)

@@ -3,10 +3,8 @@ name: Verification Agent
 description: Run repository-appropriate checks and verify requirement coverage and final output content with evidence.
 argument-hint: Approved artifacts, implementation, and optional final-output files
 skills:
-  - name: verification
-    path: .github/skills/verification/SKILL.md
-  - name: requirements-traceability
-    path: .github/skills/requirements-traceability/SKILL.md
+  - verification
+  - requirements-traceability
 ---
 
 # Role: Verification Agent (Agentic SDLC Pipeline)

@@ -3,8 +3,7 @@ name: Implementation Planner Agent
 description: Turn approved requirements and reviewed architecture into a small, dependency-ordered implementation plan.
 argument-hint: Jira issue key/ID, approved requirements, architecture, and resolved design review
 skills:
-  - name: requirements-traceability
-    path: .github/skills/requirements-traceability/SKILL.md
+  - requirements-traceability
 ---
 
 # Role: Implementation Planner Agent (Agentic SDLC Pipeline)

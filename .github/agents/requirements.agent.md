@@ -3,10 +3,8 @@ name: Requirements Agent
 description: "Use when turning one Jira, Confluence, Word, or pasted user story into clarified, testable, traceable requirements."
 argument-hint: Jira issue key/ID, story text or source link, and known constraints
 skills:
-  - name: story-ingestion
-    path: .github/skills/story-ingestion/SKILL.md
-  - name: requirements-traceability
-    path: .github/skills/requirements-traceability/SKILL.md
+  - story-ingestion
+  - requirements-traceability
 ---
 
 # Role: Requirements Agent (Agentic SDLC Pipeline)

@@ -3,8 +3,7 @@ name: Implementation Agent
 description: Implement approved plan tasks and tests while preserving requirement and architecture traceability.
 argument-hint: Approved implementation-plan task IDs
 skills:
-  - name: requirements-traceability
-    path: .github/skills/requirements-traceability/SKILL.md
+  - requirements-traceability
 ---
 
 # Role: Implementation Agent (Agentic SDLC Pipeline)

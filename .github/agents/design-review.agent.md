@@ -3,8 +3,7 @@ name: Design Review Agent
 description: Independently assess architecture against approved requirements and report actionable findings.
 argument-hint: Jira issue key/ID, requirements, and architecture
 skills:
-  - name: requirements-traceability
-    path: .github/skills/requirements-traceability/SKILL.md
+  - requirements-traceability
 ---
 
 # Role: Design Review Agent (Agentic SDLC Pipeline)

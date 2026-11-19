@@ -3,8 +3,7 @@ name: Architecture Agent
 description: Create a requirements-traceable technical architecture for the approved user story.
 argument-hint: Jira issue key/ID, approved requirements, and repository context
 skills:
-  - name: requirements-traceability
-    path: .github/skills/requirements-traceability/SKILL.md
+  - requirements-traceability
 ---
 
 # Role: Architecture Agent (Agentic SDLC Pipeline)
