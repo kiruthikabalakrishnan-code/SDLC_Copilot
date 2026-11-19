@@ -4,6 +4,7 @@ test("renders local products with required details and USD prices", async ({ pag
   await page.goto("/");
   const cards = page.getByRole("article");
   await expect(cards).toHaveCount(12);
+  await expect(page.locator(".results-heading span")).toHaveText("12 products found");
   await expect(cards.first().getByRole("heading", { name: "Wireless Headphones" })).toBeVisible();
   await expect(cards.first().getByRole("img", { name: "Wireless Headphones" })).toHaveAttribute("src", "/placeholder.svg");
   await expect(cards.first()).toContainText("Electronics");
@@ -20,20 +21,25 @@ test("updates on filter changes using AND semantics and clears to unrestricted d
   const search = page.getByRole("searchbox", { name: "Search by name" });
   const category = page.getByRole("combobox", { name: "Category" });
   const maximum = page.getByRole("spinbutton", { name: "Maximum price (USD)" });
+  const resultCount = page.locator(".results-heading span");
 
   await search.fill("WIRELESS");
   await expect(page.getByRole("article")).toHaveCount(2);
+  await expect(resultCount).toHaveText("2 products found");
   await category.selectOption("Electronics");
+  await expect(resultCount).toHaveText("2 products found");
   await maximum.fill("24.99");
   await expect(page.getByRole("article")).toHaveCount(1);
   await expect(page.getByRole("article").filter({ hasText: "Wireless Mouse" })).toHaveCount(1);
   await expect(page.getByRole("article").filter({ hasText: "Wireless Headphones" })).toHaveCount(0);
+  await expect(resultCount).toHaveText("1 product found");
 
   await page.getByRole("button", { name: "Clear Filters" }).click();
   await expect(search).toHaveValue("");
   await expect(category).toHaveValue("All categories");
   await expect(maximum).toHaveValue("");
   await expect(page.getByRole("article")).toHaveCount(12);
+  await expect(resultCount).toHaveText("12 products found");
 });
 
 test("keeps the previous valid price filter when below-minimum or above-maximum values are entered", async ({ page }) => {
@@ -54,18 +60,18 @@ test("keeps the previous valid price filter when below-minimum or above-maximum 
   await maximum.fill("24.99");
   expect(await maximum.evaluate((element) => element.validity.valid)).toBe(true);
   await expect(cards).toHaveCount(6);
-  await expect(resultCount).toHaveText("6 items");
+  await expect(resultCount).toHaveText("6 products found");
 
   await maximum.fill("12.49");
   expect(await maximum.evaluate((element) => element.validity.valid)).toBe(false);
   await expect(cards).toHaveCount(6);
-  await expect(resultCount).toHaveText("6 items");
+  await expect(resultCount).toHaveText("6 products found");
   await expect(cards.filter({ hasText: "Wireless Mouse" })).toHaveCount(1);
 
   await maximum.fill("130");
   expect(await maximum.evaluate((element) => element.validity.valid)).toBe(false);
   await expect(cards).toHaveCount(6);
-  await expect(resultCount).toHaveText("6 items");
+  await expect(resultCount).toHaveText("6 products found");
   await expect(cards.filter({ hasText: "Wireless Mouse" })).toHaveCount(1);
   await expect(page.getByRole("status")).toHaveCount(0);
 
@@ -78,6 +84,7 @@ test("keeps the previous valid price filter when below-minimum or above-maximum 
 test("shows the exact empty-state text for a nonmatching search", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("searchbox", { name: "Search by name" }).fill("no matching item");
+  await expect(page.locator(".results-heading span")).toHaveText("0 products found");
   await expect(page.getByRole("status")).toHaveText("No products found");
   await expect(page.getByRole("article")).toHaveCount(0);
 });

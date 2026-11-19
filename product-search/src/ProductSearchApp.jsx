@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import products from "./data/products.json";
-import { CATEGORIES, filterProducts, formatPrice } from "./filterProducts.js";
+import { CATEGORIES, filterProducts, formatPrice, formatProductCount } from "./filterProducts.js";
 import { resolveMaxPriceInput } from "./priceInput.js";
 
 const PLACEHOLDER_IMAGE = "/placeholder.svg";
@@ -108,7 +108,7 @@ export default function ProductSearchApp() {
       <section className="results-section" aria-label="Products">
         <div className="results-heading">
           <h2>Products</h2>
-          <span>{visibleProducts.length} {visibleProducts.length === 1 ? "item" : "items"}</span>
+          <span>{formatProductCount(visibleProducts.length)}</span>
         </div>
         {visibleProducts.length > 0 ? (
           <div className="product-grid">

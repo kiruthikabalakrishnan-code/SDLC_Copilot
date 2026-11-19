@@ -19,3 +19,11 @@ export function formatPrice(price) {
     maximumFractionDigits: 2,
   }).format(price);
 }
+
+export function formatProductCount(count) {
+  if (count === 0) {
+    return "0 products found";
+  }
+
+  return `${count} ${count === 1 ? "product" : "products"} found`;
+}

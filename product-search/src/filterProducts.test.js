@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import products from "./data/products.json";
-import { CATEGORIES, filterProducts, formatPrice } from "./filterProducts.js";
+import { CATEGORIES, filterProducts, formatPrice, formatProductCount } from "./filterProducts.js";
 
 const sample = [
   { id: "a", name: "Wireless Headphones", category: "Electronics", price: 129.99 },
@@ -56,5 +56,11 @@ describe("local product fixture and formatting", () => {
   it("formats USD values with exactly two fraction digits", () => {
     expect(formatPrice(12.5)).toBe("$12.50");
     expect(formatPrice(0)).toBe("$0.00");
+  });
+
+  it("formats zero, singular, and plural product counts", () => {
+    expect(formatProductCount(0)).toBe("0 products found");
+    expect(formatProductCount(1)).toBe("1 product found");
+    expect(formatProductCount(2)).toBe("2 products found");
   });
 });
